@@ -2,6 +2,8 @@ package com.mohit.blog.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.mohit.blog.entities.User;
 import com.mohit.blog.payload.UserDTO;
 
