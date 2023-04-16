@@ -1,12 +1,7 @@
 package com.mohit.blog.services;
 
 import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.mohit.blog.payload.CategoryDto;
-
-
 public interface CategoryService {
 
 	
