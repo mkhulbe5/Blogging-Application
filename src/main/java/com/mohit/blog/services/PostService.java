@@ -8,11 +8,10 @@ import com.mohit.blog.entities.Category;
 import com.mohit.blog.entities.Post;
 import com.mohit.blog.payload.PostDto;
 
-@Service
 public interface PostService {
 
 	//Create Post
-	Post createPost(PostDto postDto);
+	PostDto createPost(PostDto postDto,Integer postId,Integer categoryId);
 	
 	//Update Post
 	Post updatePost(PostDto postDto,Integer postId);
@@ -27,8 +26,11 @@ public interface PostService {
 	List<Post> getAllPost();
 	
 	//get All By Category
-	List<Post>getAllPostByCategory(Integer categoryId);
+	List<PostDto>getPostByCategory(Integer categoryId);
 	
 	//Get All Post By User
-	List<Post> getAllPostByUser(Integer userId);
+	List<PostDto> getAllPostByUser(Integer userId);
+	
+	//Search A Post By Keyword
+	List<Post> searchPosts(String keyword);
 }
