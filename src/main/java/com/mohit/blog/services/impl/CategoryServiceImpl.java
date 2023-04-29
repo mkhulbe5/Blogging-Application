@@ -24,7 +24,6 @@ public class CategoryServiceImpl implements CategoryService{
 	
 	@Override
 	public CategoryDto createCategory(CategoryDto categoryDto) {
-		// TODO Auto-generated method stub
 		Category cat = this.modelmapper.map(categoryDto, Category.class);
 		Category addedCategory = this.categoryRepo.save(cat);
 		return this.modelmapper.map(addedCategory,CategoryDto.class);
@@ -43,7 +42,6 @@ public class CategoryServiceImpl implements CategoryService{
 
 	@Override
 	public void deleteCategory(Integer categoryId) {
-		// TODO Auto-generated method stub
 		Category cat = this.categoryRepo.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Category", "categoryId", categoryId));
 		this.categoryRepo.delete(cat);
 	}

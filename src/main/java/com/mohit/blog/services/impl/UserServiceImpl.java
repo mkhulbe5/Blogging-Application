@@ -25,8 +25,6 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public UserDTO createUser(UserDTO userdto) {
-		// TODO Auto-generated method stub
-		
 		User user = this.dtoToUser(userdto);
 		User savedUser = this.userRepo.save(user);
 		return this.userToDto(savedUser);
@@ -34,7 +32,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDTO updateUser(UserDTO userDto, Integer userId) {
-		// TODO Auto-generated method stub
 		User user= this.userRepo.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User","id",userId));
 		
 		user.setName(userDto.getName());
@@ -48,14 +45,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDTO getUserById(Integer userId) {
-		// TODO Auto-generated method stub
 		User user= this.userRepo.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User","id",userId));
 		return this.userToDto(user);
 	}
 
 	@Override
 	public List<UserDTO> getAllUsers() {
-		// TODO Auto-generated metho
 		List<User> users =  this.userRepo.findAll();
 		 List<UserDTO> userDtos =  users.stream().map(user->this.userToDto(user)).collect(Collectors.toList());
 		return userDtos; 
@@ -63,7 +58,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void deleteUser(Integer userId) {
-		// TODO Auto-generated method stub
 		User user= this.userRepo.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User","id",userId));
 		this.userRepo.delete(user);
 		
