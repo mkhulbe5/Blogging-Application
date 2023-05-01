@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.mohit.blog.entities.Category;
 import com.mohit.blog.entities.Post;
 import com.mohit.blog.payload.PostDto;
+import com.mohit.blog.payload.PostResponse;
 
 public interface PostService {
 
@@ -23,7 +24,7 @@ public interface PostService {
 	PostDto getPostById(Integer postId);
 	
 	//Get All Post
-	List<PostDto> getAllPost(Integer pageNumber,Integer pageSize);
+	PostResponse getAllPost(Integer pageNumber,Integer pageSize);
 	
 	//get All By Category
 	List<PostDto>getPostByCategory(Integer categoryId);
