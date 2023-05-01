@@ -52,9 +52,10 @@ public class PostController {
 	  
 	  //get all posts
 	  @GetMapping("/posts")
-	  public ResponseEntity<PostResponse>getAllPost(@RequestParam(value ="pageNumber",defaultValue = "0",required = false)Integer pageNumber,
-			  @RequestParam(value = "pageSize",defaultValue = "10",required = false)Integer pageSize){
-		  PostResponse allPost = this.postService.getAllPost(pageNumber,pageSize);
+	  public ResponseEntity<PostResponse>getAllPost(@RequestParam(value ="pageNumber",defaultValue = "1",required = false)Integer pageNumber,
+			  @RequestParam(value = "pageSize",defaultValue = "1",required = false)Integer pageSize,
+			  @RequestParam(value = "sortBy",defaultValue ="postId",required = false)String sortBy){
+		  PostResponse allPost = this.postService.getAllPost(pageNumber,pageSize,sortBy);
 		  return new ResponseEntity<PostResponse>(allPost,HttpStatus.OK);
 	  }
 	  

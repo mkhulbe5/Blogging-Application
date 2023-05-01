@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.mohit.blog.entities.Category;
@@ -76,8 +77,8 @@ public class PostServiceImpl implements PostService{
 	}
 
 	@Override
-	public PostResponse getAllPost(Integer pageNumber,Integer pageSize) {
-		org.springframework.data.domain.Pageable p = PageRequest.of(pageNumber, pageSize);
+	public PostResponse getAllPost(Integer pageNumber,Integer pageSize,String sortBy) {
+		org.springframework.data.domain.Pageable p = PageRequest.of(pageSize, pageNumber, Sort.by(sortBy));
 		
 		Page<Post> pagePost= this.postRepo.findAll(p);
 		
