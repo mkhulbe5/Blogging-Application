@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mohit.blog.config.AppConstants;
 import com.mohit.blog.entities.Post;
 import com.mohit.blog.payload.ApiResponse;
 import com.mohit.blog.payload.PostDto;
@@ -52,9 +53,9 @@ public class PostController {
 	  
 	  //get all posts
 	  @GetMapping("/posts")
-	  public ResponseEntity<PostResponse>getAllPost(@RequestParam(value ="pageNumber",defaultValue = "1",required = false)Integer pageNumber,
-			  @RequestParam(value = "pageSize",defaultValue = "1",required = false)Integer pageSize,
-			  @RequestParam(value = "sortBy",defaultValue ="postId",required = false)String sortBy){
+	  public ResponseEntity<PostResponse>getAllPost(@RequestParam(value ="pageNumber",defaultValue = AppConstants.PAGE_NUMBER,required = false)Integer pageNumber,
+			  @RequestParam(value = "pageSize",defaultValue = AppConstants.PAGE_SIZE,required = false)Integer pageSize,
+			  @RequestParam(value = "sortBy",defaultValue =AppConstants.SORT_BY,required = false)String sortBy){
 		  PostResponse allPost = this.postService.getAllPost(pageNumber,pageSize,sortBy);
 		  return new ResponseEntity<PostResponse>(allPost,HttpStatus.OK);
 	  }
@@ -78,6 +79,14 @@ public class PostController {
 	  public ApiResponse DeletePost(@PathVariable Integer postId) {
 		 this.postService.deletePost(postId);
 		 return new ApiResponse("Post has been deleted successfully",true);
+	  }
+	  
+	  //to search the posts
+	  @GetMapping("/posts/search/{keywords}")
+	  //jpa will create the LIKE query to search the posts by title/keyword
+	  public ResponseEntity<List<PostDto>> searchPostByTitle(@PathVariable("keywords")String keywords){
+		  List<PostDto> searchPosts = this.postService.searchPosts(keywords);
+		  return new ResponseEntity<List<PostDto>>(searchPosts,HttpStatus.OK);
 	  }
 	
 	  
