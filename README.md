@@ -1,1 +1,2 @@
 # Blogging-Application
+This is a backend blog application where a user can perform crud operation like post a blog ,get all the blogs,update the blog and delete the blog. A user can search for the blogs though keywords and get the blogs matching the keyword. There a certain api in which role based authentication is required. Clud bases support is added the application as the application is deployed it on AWS cloud infrastructure. Swagger is used in the application to get a idea of application.
